@@ -9,9 +9,9 @@ inline int rd(){
 }
 void parsepath(){
 	string s,li,in;
-	ifstream fin("vspath.cpp");
-	ifstream fin2("vslib.cpp");
-	ifstream fin3("vsinclude.cpp");
+	ifstream fin("C:\\vspath.cpp");
+	ifstream fin2("C:\\vslib.cpp");
+	ifstream fin3("C:\\vsinclude.cpp");
 	getline(fin,s);
 	getline(fin2,li);
 	getline(fin3,in);
@@ -54,6 +54,7 @@ void parsepath(){
 			tt="";
 		}
 	}
+	cout<"REAL "<<cur<<":"<<realpath<<endl;
 	system(("setx VS_PATH"+cur+" \""+realpath+"\"").data());
 	cur[0]++;
 	while(cur!="5"){
@@ -86,9 +87,10 @@ void parsepath(){
 	system(("setx INCLUDE \"%BEGIN_VSINCLUDE%;"+realpath+"%END_VSINCLUDE%;\"").data());
 }
 int main(){
-	system("echo %PATH% > vspath.cpp");
-	system("echo %LIB% > vslib.cpp");
-	system("echo %INCLUDE% > vsinclude.cpp");
+	system("echo %PATH% > C:\\vspath.cpp");
+	system("echo %LIB% > C:\\vslib.cpp");
+	system("echo %INCLUDE% > C:\\vsinclude.cpp");
 	parsepath();
 	return 0;
 }
+
