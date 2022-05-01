@@ -46,6 +46,8 @@ void parsepath(){
 					realpath+=tt;
 				else{
 					system(("setx VS_PATH"+cur+" \""+realpath+"\"").data());
+					if(cur=="2")
+						system(("setx VSP_PATH"+cur+" \""+realpath+"\"").data());
 					realpath=tt;
 					cur[0]++;
 				}
@@ -54,8 +56,9 @@ void parsepath(){
 			tt="";
 		}
 	}
-	cout<"REAL "<<cur<<":"<<realpath<<endl;
 	system(("setx VS_PATH"+cur+" \""+realpath+"\"").data());
+	if(cur=="2")
+		system(("setx VSP_PATH"+cur+" \""+realpath+"\"").data());
 	cur[0]++;
 	while(cur!="5"){
 		system(("setx VS_PATH"+cur+" \"\"").data());
