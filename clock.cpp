@@ -8,11 +8,11 @@ int main(){
 	int R,G,B,SECONDS;
 	cin>>R>>G>>B>>SECONDS;
 	initgraph(200,200);
-	setfillcolor(R*256*256+G*256+B);
+	setfillcolor(RGB(R,G,B));
 	solidrectangle(0,0,200,200);
-	setfillcolor(0);
+	setfillcolor(RGB(0,0,0));
 	solidcircle(100,100,60);
-	setfillcolor(255*256*256+255*256+255);
+	setfillcolor(RGB(255,255,255));
 	solidcircle(100,100,50);
 	for(int i=30-SECONDS;i<=30;i++){
 		double A=cos(i*1.00*PI/30.00);
