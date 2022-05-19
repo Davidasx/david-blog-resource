@@ -7,7 +7,9 @@
 #include<queue>
 using namespace std;
 char x[2]="";
-string ver="MATCHER 1.2.0 by David X";
+string ver1=" Running.Press any key to pause. ";
+string ver2="Paused.Press any key to continue.";
+string ver=ver2;
 vector<pair<int,int> > q;
 COORD xx;
 void cursorpos(int px,int py){
@@ -39,18 +41,38 @@ int main(){
 	padding();
 	uplow();
 	base();
-	while(!_kbhit()){
-		A=rand()%28,B=rand()%24;
-		A+=1;if(A>14) A+=12;
-		B+=15;if(B>26) B+=14;
-		while((tar_a!=0&&A!=tar_a)||(tar_b!=0&&B!=tar_b)){
+	while(1){
+		ver=ver1;
+		while(!_kbhit()){
 			A=rand()%28,B=rand()%24;
 			A+=1;if(A>14) A+=12;
 			B+=15;if(B>26) B+=14;
+			while((tar_a!=0&&A!=tar_a)||(tar_b!=0&&B!=tar_b)){
+				A=rand()%28,B=rand()%24;
+				A+=1;if(A>14) A+=12;
+				B+=15;if(B>26) B+=14;
+			}
+			q.push_back(make_pair(A,B));
+			if((int)(q.size())>5) q.erase(q.begin());
+			cursorpos(0,0);
+			printf("%s\n",ver.data());
+			padding();
+			uplow();
+			for(int i=0;i<(int)(q.size());i++){
+				padding();
+				printf("|   %02d %02d   |\n",q[i].first,q[i].second);
+			}
+			for(int i=0;i<5-(int)(q.size());i++){
+				padding();
+				empty();
+			}
+			padding();
+			uplow();
+			base();
+			Sleep(50);
 		}
-		q.push_back(make_pair(A,B));
-		if((int)(q.size())>5) q.erase(q.begin());
-		cursorpos(0,0);
+		ver=ver2;
+		system("cls");
 		printf("%s\n",ver.data());
 		padding();
 		uplow();
@@ -65,7 +87,7 @@ int main(){
 		padding();
 		uplow();
 		base();
-		Sleep(50);
+		system("pause > nul");
 	}
 	return 0;
 }
